@@ -3,6 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  state = {
+    toggle: true // default state toggle is true
+  }
+
+  // define a method on our component App which we can access with {this.toggle}
+  // within this method we are saying change the state 'toggle' to the opposite of what it currently is
+  toggle = () => {
+    this.setState({
+      toggle: !this.state.toggle // we want this to be the opposite of its current state
+    }) // setState is a method of React Component
+  }
+
   render() {
     return (
       <div className="App">
@@ -13,6 +26,12 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        {/*inline conditionals*/}
+        {this.state.toggle &&
+          <p>This should show and hide</p>
+        }
+        {/*when xou click on the button, run the function toggle*/}
+        <button onClick={this.toggle}>Show / Hide</button>
       </div>
     );
   }
