@@ -4,12 +4,8 @@ import './App.css';
 
 class App extends Component {
 
-  // define a method on our component App which we can access with {this.toggle}
-  // within this method we are saying change the state 'toggle' to the opposite of what it currently is
-  toggle = () => {
-    this.setState({ // setState is a method of React Component
-      toggle: !this.state.toggle // we want this to be the opposite of its current state
-    })
+  submit = () => {
+
   };
 
   // lifecycle method render(). comes after componentWillMount
@@ -24,8 +20,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <input type="text"/>
         {/*when you click on the button, run the function toggle*/}
-        <button onClick={this.toggle}>Show / Hide</button>
+        <button onClick={this.submit}>Show / Hide</button>
       </div>
     );
   }
