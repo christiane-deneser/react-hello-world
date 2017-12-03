@@ -5,32 +5,36 @@ import './App.css';
 class App extends Component {
 
   submit = () => {
-
+    console.log(this.text.value);
   };
 
-  // lifecycle method render(). comes after componentWillMount
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          {/*pass prop toggle to child component. anytime state updates in parent, it also updates in child/ren component/s*/}
           <Welcome text="Welcome to React, Nani"/>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <input type="text"/>
-        {/*when you click on the button, run the function toggle*/}
+        {/*ref: assign a property to a DOM elem. of your comp., using 'this.[whatevername]' */}
+        <input type="text" ref={(input) => this.text = input}/>
         <button onClick={this.submit}>Show / Hide</button>
       </div>
     );
   }
 }
 
+// the function below is basically the same as..
+// ref={(input) => this.text = input}
+//
+// const name = function(input) {
+//   this.input = input;
+// };
+
 class Welcome extends Component {
   render() {
-    // access state toggle of parent component as a prop in child component
     const { text } = this.props;
 
     return (
