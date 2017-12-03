@@ -4,31 +4,6 @@ import './App.css';
 
 class App extends Component {
 
-  // 1. lifecycle method that is called right after the comp. is created: constructor is called
-  // before React 16 state was defined in the constructor
-  constructor(props) {
-    super(props);
-    console.log('constructor');
-  }
-
-  // 2. React specific lifecycle method: componentWillMount is called right before the comp. will render
-  // anything before comp. is rendered
-  // access to 'this'. this.props is available
-  // will NOT trigger a re-render
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-
-  // 4. lifecycle method is called after render(), when comp. is rendered
-  // will trigger a re-render, cause state is changed
-  componentDidMount() {
-    console.log('mounted');
-  }
-
-  state = {
-    toggle: true // default state toggle is true
-  };
-
   // define a method on our component App which we can access with {this.toggle}
   // within this method we are saying change the state 'toggle' to the opposite of what it currently is
   toggle = () => {
@@ -44,16 +19,11 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           {/*pass prop toggle to child component. anytime state updates in parent, it also updates in child/ren component/s*/}
-          <Welcome text="Welcome to React, Nani" toggle={this.state.toggle}/>
+          <Welcome text="Welcome to React, Nani"/>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        {/*inline conditionals*/}
-        {/*if (this.state.togle === true) {<p>This ..</p>}*/}
-        {this.state.toggle &&
-          <p>This should show and hide</p>
-        }
         {/*when you click on the button, run the function toggle*/}
         <button onClick={this.toggle}>Show / Hide</button>
       </div>
@@ -64,8 +34,7 @@ class App extends Component {
 class Welcome extends Component {
   render() {
     // access state toggle of parent component as a prop in child component
-    const { text, toggle } = this.props;
-    console.log(toggle);
+    const { text } = this.props;
 
     return (
       <h1 className="App-title">{text}</h1>
